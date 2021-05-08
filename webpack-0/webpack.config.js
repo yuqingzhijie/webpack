@@ -1,3 +1,5 @@
+var path = require("path");
+
 module.exports = {
   entry: {
     index: "./src/index.js"
@@ -23,8 +25,18 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['@babel/preset-env', { targets: "ie 11" }]
+              ['@babel/preset-env', { targets: "ie 9" }]
             ]
+          }
+        }
+      },
+      {
+        test: /\.png|jpg|gif$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'assets/[name].[ext]',
+            publicPath: './assets'
           }
         }
       }
